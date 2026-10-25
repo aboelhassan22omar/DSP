@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#05060B">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Digital Signal Processing course workspace for SC students at FCIS ASU.">
+  <title>DSP Studio | FCIS ASU</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2364D2FF'/%3E%3Cstop offset='.5' stop-color='%230A84FF'/%3E%3Cstop offset='1' stop-color='%235E5CE6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M6 16c2.5-7 5-7 7.5 0s5 7 7.5 0 3.5-4 5-2' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&family=JetBrains+Mono:wght@400..600&family=Readex+Pro:wght@200..700&family=STIX+Two+Text:ital,wght@1,400..600&display=swap">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="/front/styles.css?v=13.1">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
+  <script src="/front/script.js?v=13.1" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#mainContent" data-i18n="skip">Skip to content</a>
+  <div class="ambient" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+  <header class="topbar" id="topbar">
+    <nav class="nav container" aria-label="Main navigation" data-i18n-aria="mainNavLabel">
+      <a class="brand" href="#home" data-view-link="home" aria-label="DSP Studio home" data-i18n-aria="homeLabel">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 16c2.5-7 5-7 7.5 0s5 7 7.5 0 3.5-4 5-2"/></svg></span>
+        <span class="brand-word"><b>DSP</b><small>STUDIO</small></span>
+      </a>
+
+      <div class="nav-links" id="mainNav">
+        <a class="nav-link active" href="#home" data-view-link="home" data-nav="home"><svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.4 12 3.5l8.5 6.9V19a1.5 1.5 0 0 1-1.5 1.5h-4.2v-5.6H9.2v5.6H5A1.5 1.5 0 0 1 3.5 19z"/></svg><span data-i18n="navHome">Home</span></a>
+        <a class="nav-link" href="#team" data-scroll-link data-nav="team"><svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.2" r="3.2"/><path d="M3.2 19.5c.6-3.2 3-5.2 5.8-5.2s5.2 2 5.8 5.2"/><circle cx="17" cy="9.2" r="2.5"/><path d="M15.8 14.4c2.4.2 4.3 2 4.9 4.9"/></svg><span data-i18n="navTeam">Team</span></a>
+        <button class="nav-lab-btn" type="button" data-open-labs data-nav="labs">
+          <svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3.5h6M10 3.5v5.8l-5.1 8.8A1.9 1.9 0 0 0 6.5 21h11a1.9 1.9 0 0 0 1.6-2.9L14 9.3V3.5M7.4 15h9.2"/></svg>
+          <span data-i18n="navLabs">Labs</span>
+        </button>
+        <span class="nav-indicator" aria-hidden="true"></span>
+        <div class="course-chip"><span aria-hidden="true"></span> FCIS ASU · SC</div>
+      </div>
+
+      <div class="nav-end">
+        <button id="languageToggle" class="language-toggle" type="button" aria-label="Switch language">
+          <svg class="lang-globe-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.25"/><path d="M2.75 12h18.5M12 2.75c2.4 2.5 3.6 5.6 3.6 9.25S14.4 18.75 12 21.25M12 2.75C9.6 5.25 8.4 8.35 8.4 12s1.2 6.75 3.6 9.25"/></svg>
+          <span class="lang-text">العربية</span>
+        </button>
+        <button class="nav-toggle" type="button" aria-controls="mainNav" aria-expanded="false" aria-label="Open navigation" data-i18n-aria="openMenu"><span></span></button>
+      </div>
+    </nav>
+    <div id="scrollProgress" aria-hidden="true"></div>
+  </header>
+
+  <main id="mainContent">
+    <div id="homeView" class="view is-active">
+      <section id="home" class="hero">
+        <canvas id="hero3d" class="hero-field" role="img" aria-label="Animated digital signal" data-i18n-aria="heroSignalLabel"></canvas>
+        <div class="hero-shade" aria-hidden="true"></div>
+
+        <div class="container hero-inner">
+          <div class="hero-copy row g-4 gx-lg-5 align-items-end">
+            <div class="col-lg-7"><h1 data-i18n-html="heroTitle">See the signal.<br><span>Understand what is inside.</span></h1></div>
+            <div class="col-lg-5 hero-side">
+              <p class="lead" data-i18n-html="heroCopy">A hands-on <strong>Digital Signal Processing</strong> workspace for SC students at the Faculty of Computer and Information Sciences — Ain Shams University.</p>
+            <div class="hero-actions">
+              <button class="btn-primary-glow" type="button" data-open-labs>
+                <span data-i18n="exploreLabs">Explore labs</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+              </button>
+              <a class="btn-quiet" href="#team" data-scroll-link data-i18n="meetTeam">Meet the team</a>
+            </div>
+            </div>
+</div>
+        </div>
+
+        <div class="hero-band" id="heroBand">
+          <div class="container"><div class="row g-3 band-row">
+            <div class="col-md-3 col-lg-2"><div class="freq-axis h-100" aria-hidden="true">
+              <span class="particle">x[n]</span>
+              <span class="particle">e<sup>-jωn</sup></span>
+              <span class="particle">Σ x[k]</span>
+              <span class="particle">H(e<sup>jω</sup>)</span>
+              <span class="particle">δ[n]</span>
+              <span class="particle">ω = 2πf</span>
+              <span class="particle">y[n] * h[n]</span>
+            </div>
+            </div>
+            <div class="col-md-9 col-lg-10"><div class="hero-scope h-100">
+              <div class="lane-head">
+                <span class="lane-live"><span class="status-light" aria-hidden="true"></span> LIVE SIGNAL</span>
+                <code>x[n] / TIME DOMAIN</code>
+              </div>
+              <div class="lane-plot" id="heroLane">
+                <canvas class="lane-canvas" aria-hidden="true"></canvas>
+                <span class="axis-label axis-y">AMPLITUDE</span>
+                <div class="lane-reading reading-one"><small>PEAK</small><b>+24.00</b></div>
+                <div class="lane-reading reading-two"><small>SAMPLES</small><b>320</b></div>
+              </div>
+              <span class="axis-label axis-x">SAMPLE INDEX (n)</span>
+            </div></div>
+          </div></div>
+        </div>
+
+        <div class="hero-axis">
+          <div class="container axis-row">
+            <div class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span> SCIENTIFIC COMPUTING · 2026</div>
+            <div class="hero-facts">
+              <div><strong>03</strong><span data-i18n="activeLab">Active lab</span></div>
+              <div><strong>15</strong><span data-i18n="testCases">Test cases</span></div>
+              <div><strong>SC</strong><span data-i18n="department">Department</span></div>
+            </div>
+            <div class="observatory-foot"><span><i aria-hidden="true"></i> Input stream stable</span><b>48 kHz</b></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="signalPlayground" class="playground-section section-pad">
+        <div class="container">
+          <div class="playground-intro row g-3 gx-lg-5 align-items-end">
+            <div class="col-lg-7"><h2 class="section-title" data-i18n-html="playgroundTitle">Shape the signal<br><span>your way.</span></h2></div>
+            <div class="col-lg-5"><p class="section-copy" data-i18n="playgroundCopy">Adjust frequency and amplitude, explore different waveforms, and move the pointer across the screen to shape the signal in real time.</p></div>
+          </div>
+
+          <div class="section-axis"><span class="axis-rule" aria-hidden="true"></span><div class="section-label" data-i18n="playgroundSection">01 / SIGNAL PLAYGROUND</div></div>
+          <div class="oscilloscope">
+            <div class="scope-toolbar">
+              <div class="scope-identity">
+                <span class="scope-live"><i aria-hidden="true"></i> CH-1 ACTIVE</span>
+                <strong>DIGITAL OSCILLOSCOPE</strong>
+              </div>
+              <div class="wave-selector" role="group" aria-label="Choose waveform" data-i18n-aria="waveTypeLabel">
+                <button class="active" type="button" data-wave="sine" aria-pressed="true" data-i18n="sine">Sine</button>
+                <button type="button" data-wave="superposition" aria-pressed="false" data-i18n="superposition">Superposition</button>
+                <button type="button" data-wave="discrete" aria-pressed="false" data-i18n="discrete">Discrete</button>
+                <button type="button" data-wave="modulation" aria-pressed="false">AM</button>
+              </div>
+            </div>
+
+            <div class="scope-screen">
+              <canvas id="heroOscilloscope" role="img" aria-label="Interactive oscilloscope controlled by frequency and amplitude" data-i18n-aria="scopeLabel"></canvas>
+              <div class="scope-readout readout-top"><small>MODE</small><b id="oscMode">SINE WAVE</b></div>
+              <div class="scope-readout readout-bottom"><small>SAMPLE RATE</small><b>1000 Hz</b></div>
+              <div class="scope-crosshair" aria-hidden="true"></div>
+            </div>
+
+            <div class="scope-controls">
+              <div class="scope-control">
+                <div class="control-label"><label for="oscFreqSlider" data-i18n="frequency">Frequency</label><output id="oscFreqVal" for="oscFreqSlider">4 Hz</output></div>
+                <input id="oscFreqSlider" type="range" min="1" max="12" step="1" value="4">
+                <div class="range-scale"><span>1 Hz</span><span>12 Hz</span></div>
+              </div>
+              <div class="scope-control">
+                <div class="control-label"><label for="oscAmpSlider" data-i18n="amplitude">Amplitude</label><output id="oscAmpVal" for="oscAmpSlider">1.0</output></div>
+                <input id="oscAmpSlider" type="range" min="0.2" max="1.5" step="0.1" value="1">
+                <div class="range-scale"><span>0.2</span><span>1.5</span></div>
+              </div>
+              <div class="scope-formula">
+                <small>LIVE EQUATION</small>
+                <code id="oscFormula">y(t) = A·sin(2πft)</code>
+              </div>
+              <button id="oscPause" class="scope-pause" type="button" aria-pressed="false">
+                <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+                <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
+                <span>Pause</span>
+              </button>
+            </div>
+            <div class="scope-tip"><span>INTERACTIVE</span> <b data-i18n="scopeTip">Move the pointer inside the screen to influence the signal</b></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="team" class="team-section section-pad">
+        <div class="container">
+          <div class="team-intro row g-3 gx-lg-5 align-items-end">
+            <div class="col-lg-7"><h2 class="section-title" data-i18n-html="teamTitle">The minds <span>behind the signal.</span></h2></div>
+            <div class="col-lg-5"><p class="section-copy" data-i18n="teamCopy">A student project for the Digital Signal Processing course — Scientific Computing Department.</p></div>
+          </div>
+          <div class="section-axis"><span class="axis-rule" aria-hidden="true"></span><div class="section-label" data-i18n="teamSection">02 / THE TEAM</div></div>
+          <div class="student-grid row g-3 g-lg-4" role="list">
+            <div class="col-md-6" role="listitem"><div class="student-card ch-a">
+              <div class="legend-handle" aria-hidden="true"><i></i><div class="student-avatar" data-i18n="omarInitial">O</div><i></i></div>
+              <div class="student-info"><h3 data-i18n="omarName">Omar Ahmed Mohamed Aboulhassan</h3><p class="student-meta"><small data-i18n="scStudent">SC STUDENT</small><code>20241700553</code></p></div>
+              <div class="id-tag">ASU</div>
+            </div></div>
+            <div class="col-md-6" role="listitem"><div class="student-card ch-b">
+              <div class="legend-handle" aria-hidden="true"><i></i><div class="student-avatar alt" data-i18n="abdelrahmanInitial">A</div><i></i></div>
+              <div class="student-info"><h3 data-i18n="abdelrahmanName">Abdelrahman Atef Sayed Abdellah</h3><p class="student-meta"><small data-i18n="scStudent">SC STUDENT</small><code>20241700458</code></p></div>
+              <div class="id-tag">ASU</div>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="footer-map" aria-hidden="true"></div>
+        <div class="container footer-row"><span>DSP STUDIO · FCIS ASU</span><span>Scientific Computing Department · 2026</span></div>
+      </footer>
+    </div>
+
+    <div id="labView" class="view" hidden>
+      <section class="labs-page">
+        <div class="labs-dashboard container-fluid"><div class="row g-3 g-lg-4">
+          <div class="col-lg-4 col-xl-3"><aside class="labs-sidebar" aria-label="Labs list">
+            <div class="labs-sidebar-head">
+              <span class="labs-symbol" aria-hidden="true"><i></i><i></i><i></i></span>
+              <div><h2 data-i18n="labsTitle">Labs</h2><small>DSP WORKSPACE</small></div>
+            </div>
+            <nav class="labs-list" aria-label="Available labs">
+              <button class="lab-nav-item" type="button" data-lab="lab1" aria-pressed="false">
+                <span class="lab-nav-number">01</span>
+                <span class="lab-nav-copy"><strong>Lab 1</strong><small data-i18n="arithmeticOps">Arithmetic Operations</small></span>
+                <span class="lab-ready" data-i18n="ready">READY</span>
+              </button>
+              <button class="lab-nav-item" type="button" data-lab="lab2" aria-pressed="false">
+                <span class="lab-nav-number">02</span>
+                <span class="lab-nav-copy"><strong>Lab 2</strong><small data-i18n="lab2Ops">Arithmetic &amp; Quantization</small></span>
+                <span class="lab-ready" data-i18n="ready">READY</span>
+              </button>
+              <button class="lab-nav-item" type="button" data-lab="lab4" aria-pressed="false">
+                <span class="lab-nav-number">04</span>
+                <span class="lab-nav-copy"><strong>Lab 4</strong><small data-i18n="lab4Ops">Frequency Domain</small></span>
+                <span class="lab-ready" data-i18n="ready">READY</span>
+              </button>
+            </nav>
+            <div class="labs-sidebar-foot"><span>3</span> <b data-i18n="labAvailable">LAB AVAILABLE</b></div>
+          </aside></div>
+
+          <div class="col-lg-8 col-xl-9 labs-main">
+            <div class="labs-topbar">
+              <button class="back-button" type="button" data-view-link="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg> <span data-i18n="backHome">Back home</span></button>
+              <div class="labs-breadcrumb"><span>DSP STUDIO</span><i>/</i><b id="activeLabName">LABS</b></div>
+            </div>
+
+            <div id="labsEmptyState" class="labs-empty-state">
+              <div class="labs-empty-visual" aria-hidden="true">
+                <span></span><span></span><span></span>
+                <svg viewBox="0 0 48 48"><path d="M15 8v9L7 34a4 4 0 0 0 4 6h26a4 4 0 0 0 4-6l-8-17V8M12 8h24M12 31h24M17 24h14"/></svg>
+              </div>
+              <h1 data-i18n="chooseLabTitle">Choose a lab to get started</h1>
+              <p data-i18n="chooseLabCopy">Every practical experiment will appear here. Select a lab from the left sidebar to open its workspace.</p>
+              <div class="empty-meta">
+                <small data-i18n="labDirectory">LABORATORY DIRECTORY</small>
+                <div class="empty-status"><i aria-hidden="true"></i> <span data-i18n="waitingChoice">Waiting for your choice</span></div>
+              </div>
+            </div>
+
+            <div id="lab1Workspace" class="lab-workspace" hidden>
+              <div class="lab-heading">
+                <h1 id="workspaceTitle">Arithmetic <em>Operations</em></h1>
+                <div class="lab-heading-meta">
+                  <p data-i18n="labIntro">Choose the signals and operation, then run the experiment to inspect and validate the result.</p>
+                </div>
+              </div>
+
+              <div class="lab-layout row g-3 g-xl-4 align-items-start">
+                <div class="col-xl-5"><aside class="control-panel">
+                  <div class="panel-step"><b>01</b><div><h2 data-i18n="chooseSignals">Choose signals</h2><small data-i18n="inputSignals">INPUT SIGNALS</small></div><span id="selectionCount" class="count-pill">0 selected</span></div>
+                  <div id="signalList" class="signal-list" aria-live="polite"><div class="skeleton-line"></div><div class="skeleton-line"></div><div class="skeleton-line"></div></div>
+                  <div class="panel-divider"></div>
+                  <div class="panel-step"><b>02</b><div><h2 data-i18n="chooseOperation">Choose operation</h2><small data-i18n="operationLabel">OPERATION</small></div></div>
+                  <div class="operation-switch" role="group" aria-label="Arithmetic operation">
+                    <button class="operation active" type="button" data-operation="addition" aria-pressed="true">
+                      <span class="op-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="10.5"/><path d="M16 10.5v11M10.5 16h11"/></svg></span>
+                      <span><strong data-i18n="addSignals">Add two signals</strong><small>x₁[n] + x₂[n]</small></span>
+                    </button>
+                    <button class="operation" type="button" data-operation="multiplication" aria-pressed="false">
+                      <span class="op-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M8 6.5v19L26 16Z"/><path d="M2.5 16H8"/></svg></span>
+                      <span><strong data-i18n="multiplyConstant">Multiply by constant</strong><small>c · x[n]</small></span>
+                    </button>
+                  </div>
+                  <div id="lab2Operations" class="operation-switch" role="group" aria-label="Lab 2 operation" hidden>
+<button class="operation" type="button" data-operation="subtraction" aria-pressed="false"><span><strong data-i18n="subtraction">Subtract signals</strong><small>|x₁[n] − x₂[n]|</small></span></button>
+<button class="operation" type="button" data-operation="squaring" aria-pressed="false"><span><strong data-i18n="squaring">Square signal</strong><small>x²[n]</small></span></button>
+<button class="operation" type="button" data-operation="normalization" aria-pressed="false"><span><strong data-i18n="normalization">Normalize signal</strong><small>[-1, 1] / [0, 1]</small></span></button>
+<button class="operation" type="button" data-operation="accumulation" aria-pressed="false"><span><strong data-i18n="accumulation">Accumulate signal</strong><small>Σ x[k]</small></span></button>
+<button class="operation" type="button" data-operation="quantization" aria-pressed="false"><span><strong data-i18n="quantization">Quantize signal</strong><small>Levels / bits</small></span></button>
+                  </div>
+                  <div id="lab4Operations" class="operation-switch" role="group" aria-label="Lab 4 operation" hidden>
+<button class="operation" type="button" data-operation="dft" aria-pressed="false"><span><strong data-i18n="dft">Fourier transform (DFT)</strong><small>X(k) = Σ x(n) e<sup>−j2πkn/N</sup></small></span></button>
+<button class="operation" type="button" data-operation="idft" aria-pressed="false"><span><strong data-i18n="idft">Reconstruct signal (IDFT)</strong><small>x(n) = 1/N Σ X(k) e<sup>j2πnk/N</sup></small></span></button>
+<button class="operation" type="button" data-operation="remove_dc" aria-pressed="false"><span><strong data-i18n="removeDc">Remove DC component</strong><small>F(0) = 0</small></span></button>
+<button class="operation" type="button" data-operation="modify" aria-pressed="false"><span><strong data-i18n="modify">Modify a component</strong><small>A(k), φ(k)</small></span></button>
+                  </div>
+                  <div id="lab4Box" class="constant-box" hidden><label for="samplingFrequency" data-i18n="samplingFrequency">Sampling frequency (Hz)</label><div class="number-wrap"><span>Fs</span><input id="samplingFrequency" type="number" min="0" step="any" value="4"></div><div id="modifyBox" hidden><label for="componentIndex" data-i18n="componentIndex">Component index k</label><div class="number-wrap"><span>k =</span><input id="componentIndex" type="number" min="0" step="1" value="0"></div><label for="componentAmplitude" data-i18n="newAmplitude">New amplitude</label><div class="number-wrap"><span>A =</span><input id="componentAmplitude" type="number" step="any" placeholder="keep"></div><label for="componentPhase" data-i18n="newPhase">New phase (rad)</label><div class="number-wrap"><span>φ =</span><input id="componentPhase" type="number" step="any" placeholder="keep"></div><div class="preset-row"><button type="button" data-modify-preset="1,0,">X(1): A = 0</button><button type="button" data-modify-preset="2,,1">X(2): φ = 1</button></div></div></div>
+                  <div id="normalizationBox" class="constant-box" hidden><label for="normalizationRange" data-i18n="normalizationRange">Normalization range</label><select id="normalizationRange" class="form-select"><option value="-1">-1 to 1</option><option value="0">0 to 1</option></select></div>
+                  <div id="quantizationBox" class="constant-box" hidden><label for="quantizationMode" data-i18n="quantizationMode">Quantization input</label><select id="quantizationMode" class="form-select"><option value="bits" data-i18n="bits">Number of bits</option><option value="levels" data-i18n="levels">Number of levels</option></select><label for="quantizationNumber" data-i18n="quantizationNumber">Bits / levels</label><div class="number-wrap"><input id="quantizationNumber" type="number" min="1" step="1" value="3"></div><div class="preset-row"><button type="button" data-quant-preset="1">Quan1 / 3 bits</button><button type="button" data-quant-preset="2">Quan2 / 4 levels</button></div></div>
+                  <div id="constantBox" class="constant-box" hidden><label for="constantInput" data-i18n="constantValue">Constant value</label><div class="number-wrap"><span>c =</span><input id="constantInput" type="number" value="5" step="any"></div><div class="preset-row"><button type="button" data-preset="5">Signal1 × 5</button><button type="button" data-preset="10">Signal2 × 10</button></div></div>
+                  <div id="operationHint" class="operation-hint"><span>i</span><p>You can add any two signals. Official tests: <b>Signal1 + Signal2</b> and <b>Signal1 + Signal3</b>.</p></div>
+                  <button id="runButton" class="run-button" type="button"><span data-i18n="runCompare">Run and compare result</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+                </aside></div>
+
+                <div class="col-xl-7"><section class="output-panel" aria-live="polite">
+                  <div id="emptyState" class="empty-state">
+                    <div class="mini-signal" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                    <h2 data-i18n="resultHere">Your result will appear here</h2><p data-i18n="resultHint">Choose signals and an operation, then run the experiment.</p><span>WAITING FOR INPUT</span>
+                  </div>
+                  <div id="resultView" hidden>
+                    <div class="result-head"><div><h2 id="equation">—</h2><span data-i18n="analysisOutput">ANALYSIS OUTPUT</span></div><button id="downloadButton" class="download-button" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg> <span data-i18n="downloadResult">Download result</span></button></div>
+                    <div id="verdict" class="verdict"><span class="verdict-mark" aria-hidden="true"></span><div class="verdict-body"><strong id="verdictTitle"></strong><p id="verdictText"></p></div><div class="verdict-side"><small id="verdictLabel">OFFICIAL TEST</small><code id="expectedFile"></code></div></div>
+                    <div class="chart-card"><div class="chart-head"><div><h3 data-i18n="discreteRepresentation">Discrete representation</h3><span data-i18n="signalView">SIGNAL VIEW</span></div></div><div class="canvas-wrap"><img id="signalChart" alt="Signals and result chart"></div></div>
+                    <div id="quantizationResults" class="quantization-table-wrap table-responsive" hidden><table class="table quantization-table"><thead><tr><th>n</th><th>x(n)</th><th data-i18n="interval">Interval</th><th data-i18n="encoded">Encoded level</th><th>x<sub>q</sub>(n)</th><th>e(n) = x<sub>q</sub>(n) − x(n)</th><th>e<sup>2</sup>(n)</th></tr></thead><tbody id="quantizationRows"></tbody></table></div>
+                    <div id="dftResults" class="quantization-table-wrap table-responsive" hidden><table class="table quantization-table"><thead><tr><th>k</th><th data-i18n="frequency">Frequency</th><th>A(k)</th><th id="normalizedHead" data-i18n="normalizedAmplitude">Normalized A</th><th>φ(k)</th></tr></thead><tbody id="dftRows"></tbody></table></div>
+                    <div id="dominantBox" class="power-error" hidden><span data-i18n="dominantFrequencies">Dominant frequencies</span><code id="dominantValue"></code><small>normalized A &gt; 0.5</small></div>
+                    <div id="powerError" class="power-error" hidden><span>Average power error</span><code id="powerErrorValue"></code><small>Σ e<sup>2</sup>(n) / N</small></div>
+                    <div class="execution-path"><span>Execution path</span><code id="executionPath">task1.py → Task1Test.py → expected output</code></div>
+                  </div>
+                </section></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div></section>
+    </div>
+  </main>
+
+  <div id="toast" class="toast-message" role="status" aria-live="polite"></div>
+</body>
+</html>
