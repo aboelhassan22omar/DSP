@@ -1,4 +1,5 @@
 import math
+import cmath
 
 def dft(values, fs):
     N = len(values)
@@ -9,7 +10,7 @@ def dft(values, fs):
 
         for n in range(N):
             angle = 2 * math.pi * k * n / N
-            total += values[n] * complex(math.cos(angle), -math.sin(angle))
+            total += values[n] * cmath.exp(-1j * angle)
 
         X.append(total)
 
@@ -47,7 +48,7 @@ def idft(amplitudes, phases):
             real = amplitudes[k] * math.cos(phases[k])
             imaginary = amplitudes[k] * math.sin(phases[k])
             angle = 2 * math.pi * n * k / N
-            total += complex(real, imaginary) * complex(math.cos(angle), math.sin(angle))
+            total += complex(real, imaginary) * cmath.exp(1j * angle)
 
         values.append(round(total.real / N, 3))
 

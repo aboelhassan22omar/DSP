@@ -6,7 +6,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
-sys.path.extend(["Lab 1", "Lab 2", "Lab 2/Test", "Lab 4", "Lab 4/Test/Remove DC component"])
+sys.path.extend(["Lab 1", "Lab 2", "Lab 2/Test", "Lab 3", "Lab 4", "Lab 4/Test/Remove DC component"])
 sys.dont_write_bytecode = True
 from task1 import add_two_signals, multiply_signal_by_number
 from Task1Test import ReadSignalFile, SignalSamplesAreEqual
@@ -14,6 +14,7 @@ from task2 import subtract_two_signals, square_signal, normalize_signal, accumul
 from ArithmeticTest import SignalSamplesAreEqual as Lab2SignalSamplesAreEqual
 from QuanTest1 import QuantizationTest1
 from QuanTest2 import QuantizationTest2
+from task3 import task3
 from Task4 import dft, idft, modify_component, remove_dc_component
 from signalcompare import SignalComapreAmplitude, SignalComaprePhaseShift
 from CompareSignals import SignalsAreEqual
@@ -238,6 +239,12 @@ def lab4(data):
 
 class Server(SimpleHTTPRequestHandler):
     def do_GET(self):
+        if self.path == "/api/lab3":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(json.dumps({"message": task3()}).encode())
+            return
         if self.path == "/":
             self.path = "/front/index.html"
         super().do_GET()

@@ -169,6 +169,7 @@
       pauseButton.querySelector("span").textContent = t(pauseButton.classList.contains("paused") ? "play" : "pause");
     }
     if (!$("#lab1Workspace").hidden) $("#activeLabName").textContent = currentLabName();
+    else if (!$("#lab3Workspace").hidden) $("#activeLabName").textContent = "LAB 3 / QUIZ";
     else $("#activeLabName").textContent = t("labsTitle").toUpperCase();
     $("#workspaceTitle").innerHTML = labTitle();
     if (state.signals.length) renderSignals();
@@ -244,6 +245,7 @@
   function resetLabSelection() {
     $("#labsEmptyState").hidden = false;
     $("#lab1Workspace").hidden = true;
+    $("#lab3Workspace").hidden = true;
     $("#activeLabName").textContent = t("labsTitle").toUpperCase();
     $$("[data-lab]").forEach((button) => {
       button.classList.remove("active");
@@ -252,7 +254,20 @@
   }
 
   function selectLab(labName, updateHash = true) {
-    if (!["lab1", "lab2", "lab4"].includes(labName)) return;
+    if (!["lab1", "lab2", "lab3", "lab4"].includes(labName)) return;
+    $("#lab3Workspace").hidden = labName !== "lab3";
+    if (labName === "lab3") {
+      $("#labsEmptyState").hidden = true;
+      $("#lab1Workspace").hidden = true;
+      $("#activeLabName").textContent = "LAB 3 / QUIZ";
+      $$("[data-lab]").forEach((button) => {
+        button.classList.toggle("active", button.dataset.lab === "lab3");
+        button.setAttribute("aria-pressed", String(button.dataset.lab === "lab3"));
+      });
+      fetch("/api/lab3").then((response) => response.json()).then((data) => { $("#lab3Message").textContent = data.message; });
+      if (updateHash) history.pushState(null, "", "#labs/lab3");
+      return;
+    }
     const changed = state.lab !== labName;
     state.lab = labName;
     $("#workspaceTitle").innerHTML = labTitle();
@@ -303,7 +318,7 @@
   });
 
   function routeFromHash() {
-    if (["#labs/lab1", "#lab1", "#labs/lab2", "#lab2", "#labs/lab4", "#lab4"].includes(location.hash)) {
+    if (["#labs/lab1", "#lab1", "#labs/lab2", "#lab2", "#labs/lab3", "#lab3", "#labs/lab4", "#lab4"].includes(location.hash)) {
       showView("labs", false);
       selectLab(location.hash.slice(-4), false);
     } else if (location.hash === "#labs") {
