@@ -7,14 +7,46 @@ It runs the team's Python lab implementations (Lab 1, Lab 2, Lab 4) from the bro
 
 ---
 
+## طريقة التشغيل (من غير أي برمجة)
+
+**مرة واحدة بس قبل أول تشغيل:** نزّل [Docker Desktop](https://www.docker.com/products/docker-desktop/) وسطّبه.
+
+1. من الصفحة دي دوس على الزرار الأخضر **Code**، وبعدين **Download ZIP**.
+2. اعمل كليك يمين على ملف الـ ZIP، واختار **Extract All**، وبعدين **Extract**.
+3. افتح الفولدر اللي اتفك، ودوس **دبل كليك** على **`run.bat`**.
+4. استنى. السكريبت هيشغّل Docker Desktop لو مقفول، ويعمل `docker compose up` على البورت 5000، ويفتح الموقع في Chrome على **http://localhost:5000** لوحده.
+
+أول مرة بتاخد كام دقيقة عشان بينزّل المكتبات ويبني الإيمدج. بعد كده بتبقى سريعة.
+
+**على ماك أو لينكس:** افتح Terminal، واكتب `bash` وبعدها مسافة، واسحب ملف `run.sh` جوه الـ Terminal، ودوس Enter.
+
+**عشان تقفل الموقع:** اقفل الكونتينر `dsp-studio` من Docker Desktop، أو شغّل الأمر ده جوه فولدر المشروع:
+`docker compose -f docker/compose.yaml down`
+
+---
+
+## Quick start (English)
+
+**One time only:** install [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+
+1. On this page click **Code**, then **Download ZIP**.
+2. Extract the ZIP.
+3. **Windows:** double-click **`run.bat`**.
+   **macOS / Linux:** open Terminal, type `bash `, drag `run.sh` into the window, and press Enter.
+4. The script starts Docker if it's closed, runs `docker compose up` on port 5000, and opens **http://localhost:5000** in Chrome.
+
+To stop: `docker compose -f docker/compose.yaml down`, or stop `dsp-studio` in Docker Desktop.
+
+---
+
 ## Project structure
 
 ```
 DSP/
+├── run.bat                # Windows: double-click to run everything
+├── run.sh                 # macOS / Linux: bash run.sh
 ├── app.py                 # Python backend (http.server on port 5000) + API
 ├── requirements.txt       # Python libraries (numpy, matplotlib)
-├── run.sh                 # launcher for Linux / macOS / Git Bash
-├── run.ps1                # launcher for Windows PowerShell
 ├── front/                 # frontend (index.html, styles.css, script.js)
 ├── Lab 1/                 # arithmetic operations (add, multiply by constant) + tests
 ├── Lab 2/                 # subtraction, squaring, normalization, accumulation, quantization + tests
@@ -25,126 +57,30 @@ DSP/
     └── compose.yaml
 ```
 
----
+## Useful Docker commands
 
-## Option 1: Run with Docker (recommended)
-
-### 1. Install the requirements
-- [Git](https://git-scm.com/downloads)
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Windows / macOS) or Docker Engine + the Compose plugin (Linux)
-
-Open Docker Desktop and wait until it says Docker is running.
-
-### 2. Download the project
-```bash
-git clone https://github.com/aboelhassan22omar/DSP.git
-cd DSP
-```
-
-### 3. Build the image and start the container
-
-**With the script:**
-```bash
-# Linux / macOS / Git Bash
-./run.sh docker
-```
-```powershell
-# Windows PowerShell
-.\run.ps1 docker
-```
-
-**Or by hand, with the same commands the script runs:**
-```bash
-docker compose -f docker/compose.yaml up -d --build
-```
-
-### 4. Open the site
-Go to **http://localhost:5000**
-
-### Useful Docker commands
 | Task | Command |
 |---|---|
+| Start (what the script runs) | `docker compose -f docker/compose.yaml up -d --build` |
 | Show the logs | `docker logs -f dsp-studio` |
 | Restart the container | `docker restart dsp-studio` |
-| Rebuild after changes | `docker compose -f docker/compose.yaml up -d --build --force-recreate` |
-| Full rebuild without cache | `docker compose -f docker/compose.yaml build --no-cache` then `docker compose -f docker/compose.yaml up -d --force-recreate` |
-| Stop and remove | `docker compose -f docker/compose.yaml down` (or `./run.sh stop` / `.\run.ps1 stop`) |
+| Rebuild without cache | `docker compose -f docker/compose.yaml build --no-cache` then `docker compose -f docker/compose.yaml up -d --force-recreate` |
+| Stop and remove | `docker compose -f docker/compose.yaml down` |
 
-> Compose mounts the project folder into the container (`..:/app`). Edits to `front/` show up after a browser refresh. Edits to the Python files need a `docker restart dsp-studio`.
+## Running without Docker (optional, for developers)
 
-**Without Compose (plain Docker):**
+Requires Python 3.10+.
+
 ```bash
-docker build -f docker/Dockerfile -t dsp .
-docker run -d --name dsp-studio -p 5000:5000 dsp
-```
-
----
-
-## Option 2: Run locally with Python (no Docker)
-
-### 1. Install the requirements
-- [Python 3.10+](https://www.python.org/downloads/). On Windows, tick **"Add Python to PATH"** during setup.
-- Git
-
-### 2. Download the project
-```bash
-git clone https://github.com/aboelhassan22omar/DSP.git
-cd DSP
-```
-
-### 3. Install the libraries and run
-
-**With the script** (it creates a `.venv`, installs `requirements.txt`, and starts the server):
-```bash
-# Linux / macOS / Git Bash
-chmod +x run.sh
-./run.sh
-```
-```powershell
-# Windows PowerShell
-# (if scripts are blocked, run once: Set-ExecutionPolicy -Scope CurrentUser RemoteSigned)
-.\run.ps1
-```
-
-**Or by hand:**
-```bash
-# 1) Create a virtual environment
 python -m venv .venv
-
-# 2) Activate it
-#    Windows PowerShell:  .\.venv\Scripts\Activate.ps1
-#    Windows CMD:         .venv\Scripts\activate.bat
-#    Linux / macOS:       source .venv/bin/activate
-
-# 3) Install the libraries
+# Windows:  .\.venv\Scripts\activate      macOS / Linux:  source .venv/bin/activate
 pip install -r requirements.txt
-
-# 4) Start the server
 python app.py
 ```
 
-### 4. Open the site
-Go to **http://localhost:5000**. Press `Ctrl + C` in the terminal to stop the server.
-
----
+Then open http://localhost:5000.
 
 ## Troubleshooting
-- **Port 5000 is already in use:** stop whatever is using it, or change the port mapping in `docker/compose.yaml` (for example `"8080:5000"`) and open `http://localhost:8080`.
-- **`docker: command not found` / cannot connect to the Docker daemon:** start Docker Desktop and try again.
-- **`python` is not recognized (Windows):** reinstall Python with "Add Python to PATH" ticked, or use `py` instead of `python`.
 
----
-
-## طريقة التشغيل باختصار (بالعربي)
-
-**بالدوكر:**
-1. نزّل Git و Docker Desktop وافتح Docker Desktop.
-2. `git clone https://github.com/aboelhassan22omar/DSP.git` وبعدين `cd DSP`
-3. شغّل `.\run.ps1 docker` على ويندوز، أو `./run.sh docker` على لينكس/ماك. ده بيبني الإيمدج ويشغل الكونتينر.
-4. افتح http://localhost:5000
-
-**من غير دوكر:**
-1. نزّل Python 3.10 أو أحدث (علّم على Add to PATH).
-2. `git clone https://github.com/aboelhassan22omar/DSP.git` وبعدين `cd DSP`
-3. شغّل `.\run.ps1` على ويندوز، أو `./run.sh` على لينكس/ماك. ده بيعمل venv وبينزّل المكتبات وبيشغّل السيرفر.
-4. افتح http://localhost:5000
+- **Port 5000 is already in use:** stop whatever is using it, or change `"5000:5000"` in `docker/compose.yaml` to, for example, `"8080:5000"` and open http://localhost:8080.
+- **Docker Desktop doesn't start:** open it yourself, wait until it says "Engine running", then double-click `run.bat` again.
